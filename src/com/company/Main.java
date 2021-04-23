@@ -1,35 +1,16 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
 public class Main {
 
     public static void main(String[] args) {
-        List<Integer> primes = primeNumbersBruteForce(10000);
-        for(int i : primes)
-            System.out.print(i + " , ");
+        int n = 100000000;
+        BruteForce bruteForce = new BruteForce(n);
+        System.out.println();
+        FirstOptimisation firstOptimisation = new FirstOptimisation(n);
+        System.out.println();
+        System.out.printf("Brute force took - %d nanoseconds\n",bruteForce.duration/n);
+        System.out.printf("First Optimisation took - %d nanoseconds\n", firstOptimisation.duration/n);
     }
 
-    public static List<Integer> primeNumbersBruteForce(int n) {
-        List<Integer> primeNumbers = new LinkedList<>();
-        if (n >= 2) {
-            primeNumbers.add(2);
-        }
-        for (int i = 3; i <= n; i += 2) {
-            if (isPrimeBruteForce(i)) {
-                primeNumbers.add(i);
-            }
-        }
-        return primeNumbers;
-    }
-    private static boolean isPrimeBruteForce(int number) {
-        for (int i = 2; i*i <= number; i++) {
-            if (number % i == 0) {
-                return false;
-            }
-        }
-        return true;
-    }
+
 }
